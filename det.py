@@ -59,8 +59,9 @@ newname = oldname+'.jpeg'
 os.rename(oldname,newname)
 img = cv2.imread(newname)
 
-os.remove(newname)
+# os.remove(newname)
 
+print("renamed")
 # if cv2.waitKey(0) & 0xff == ord('q'):
 #     pass
 img2 = cv2.GaussianBlur(img, (3,3), 0)
@@ -69,12 +70,18 @@ img2 = cv2.Sobel(img2,cv2.CV_8U,1,0,ksize=3)
 _,img2 = cv2.threshold(img2,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
 element = cv2.getStructuringElement(shape=cv2.MORPH_RECT, ksize=(17, 3))
 morph_img_threshold = img2.copy()
+print("morphed")
+
 cv2.morphologyEx(src=img2, op=cv2.MORPH_CLOSE, kernel=element, dst=morph_img_threshold)
 num_contours, hierarchy= cv2.findContours(morph_img_threshold,mode=cv2.RETR_EXTERNAL,method=cv2.CHAIN_APPROX_NONE)
 cv2.drawContours(img2, num_contours, -1, (0,255,0), 1)
+print("before if")
+
 for i,cnt in enumerate(num_contours):
     min_rect = cv2.minAreaRect(cnt)
+    print("before if2")
     if ratio_and_rotation(min_rect):
+        print("inside if")
         x,y,w,h = cv2.boundingRect(cnt)
         plate_img = img[y:y+h,x:x+w]
         # if cv2.waitKey(0) & 0xff == ord('q'):
