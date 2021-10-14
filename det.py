@@ -58,6 +58,9 @@ oldname = sys.argv[1]
 newname = oldname+'.jpeg'
 os.rename(oldname,newname)
 img = cv2.imread(newname)
+
+os.remove(newname)
+
 # if cv2.waitKey(0) & 0xff == ord('q'):
 #     pass
 img2 = cv2.GaussianBlur(img, (3,3), 0)
