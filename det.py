@@ -38,8 +38,8 @@ def ratio_and_rotation(rect):
 def clean2_plate(plate):
     gray_img = cv2.cvtColor(plate, cv2.COLOR_BGR2GRAY)
     _, thresh = cv2.threshold(gray_img, 110, 255, cv2.THRESH_BINARY)
-    if cv2.waitKey(0) & 0xff == ord('q'):
-        pass
+    # if cv2.waitKey(0) & 0xff == ord('q'):
+    #     pass
     num_contours,hierarchy = cv2.findContours(thresh.copy(),cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
     if num_contours:
         contour_area = [cv2.contourArea(c) for c in num_contours]
