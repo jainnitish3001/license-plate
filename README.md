@@ -23,7 +23,7 @@ https://git.heroku.com/nitish-license.git
 ![Screenshot](/public/Number.jpeg) 
 
 ### Flowchart
-![Screenshot](/public/Number.jpeg) 
+![Screenshot](flowchart.jpg) 
 
 ## Submitted by :- 
 ### Nitish Jain
